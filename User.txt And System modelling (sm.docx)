@@ -1,0 +1,49 @@
+# User story- selling phone online
+## 1. As a Guest User:
++Tôi muốn truy cập vào trang chủ để xem các loại mẫu điện thoại bán trên web
++Tôi có thể tìm kiếm các mẫu, loại màu mà tôi ưa thích để mua điện thoại
++Tôi muốn được giới thiệu chi tiết rõ ràng về giữa hai sản phẩm mà tôi đang phân vân
+## 2. As an Admin:
++Tôi muốn quản lý danh sách mã hàng, mã loại, mã màu, để có thể cung cấp cho các khách hàng tìm kiếm mẫu ưu thích của mình
++Tôi muốn quản lý doanh thu bán hàng của các mã hàng, mã loại
++Tôi muốn biết thông tin khách hàng đã mua hàng để vận chuyển hàng tới tay khách hàng
+## 3. As a payment user:
++Tôi muốn có thể lựa chọn phương thức thanh toán bằng tiền mặt, chuyển tiền online hoặc giao dịch bằng thẻ ngân hàng để thanh toán đơn hàng
++Tôi muốn có thể lựa chọn nơi giao hàng đến địa chỉ nhà hoặc cơ quan tôi đang làm bằng các phương thức khác nhau và đảm bảo hàng về đến nơi an toàn
++Tôi muốn được theo dõi đơn hàng từ những bước đóng gói hàng và định vị hàng đã đi về đến nơi đâu và dự kiến hàng về đến tay người mua hàng
+# system modelling (sm.docx)
+## 1.Entity-Relationship Diagram (ERD)
+-Customer (Khách hàng)
++Thuộc tính: Customer_ID (PK), Name, Email, Password, Phone, Address, Registration_Date
+-Product (Sản phẩm)
++Thuộc tính: Product_ID (PK), Name, Brand, Description, Price, Stock_Quantity, Category
+-Order (Đơn hàng)
++Thuộc tính: Order_ID (PK), Customer_ID (FK), Order_Date, Total_Amount, Status (Pending/Completed/Canceled), Payment_Method
+-OrderItem (Chi tiết đơn hàng)
++Thuộc tính: OrderItem_ID (PK), Order_ID (FK), Product_ID (FK), Quantity, Price
+-Payment (Thanh toán)
++Thuộc tính: Payment_ID (PK), Order_ID (FK), Customer_ID (FK), Amount, Payment_Date, Payment_Status, Payment_Method
+-Review (Đánh giá sản phẩm)
++Thuộc tính: Review_ID (PK), Customer_ID (FK), Product_ID (FK), Rating, Comment, Review_Date
+## 2.Use Case Diagram
+-Actors:
++Guest User (Khách truy cập): Xem sản phẩm, tìm kiếm sản phẩm, đăng ký tài khoản.
++Registered User (Khách hàng đã đăng ký): Đăng nhập, thêm sản phẩm vào giỏ hàng, tạo đơn hàng, thanh toán, xem lịch sử mua hàng, đánh giá sản phẩm.
++Admin: Quản lý sản phẩm, duyệt đơn hàng, xử lý thanh toán, quản lý đánh giá.
+-Use Cases:
+1.Guest User:
++Xem sản phẩm: Truy cập vào danh sách sản phẩm để xem thông tin chi tiết.
++Tìm kiếm sản phẩm: Tìm kiếm sản phẩm theo tên, thương hiệu, hoặc danh mục.
++Đăng ký tài khoản: Đăng ký tài khoản mới để trở thành khách hàng đã đăng ký.
+2.Registered User:
++Đăng nhập: Đăng nhập vào tài khoản để thực hiện các chức năng cá nhân.
++Thêm sản phẩm vào giỏ hàng: Chọn sản phẩm và thêm vào giỏ hàng.
++Tạo đơn hàng: Tạo đơn hàng mới từ các sản phẩm trong giỏ hàng.
++Thanh toán: Thanh toán cho đơn hàng đã tạo bằng các phương thức thanh toán có sẵn.
++Xem lịch sử mua hàng: Xem lại các đơn hàng đã đặt trước đây.
++Đánh giá sản phẩm: Để lại đánh giá và xếp hạng cho sản phẩm đã mua.
+-Admin:
++Quản lý sản phẩm: Thêm, chỉnh sửa, hoặc xóa sản phẩm.
++Duyệt đơn hàng: Xem và xác nhận các đơn hàng mới.
++Xử lý thanh toán: Kiểm tra và cập nhật tình trạng thanh toán.
++Quản lý đánh giá: Xem xét và phê duyệt các đánh giá từ khách hàng.
